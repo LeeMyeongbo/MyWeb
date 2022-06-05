@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>MB Blog!</title>
+</head>
+<body>
+    <form method="get">
+        <button class="btn btn-danger">GET</button>
+    </form>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" id="txtbox" name="search">
+        <button class="btn btn-primary">POST</button>
+    </form>
+    <h2>{{GET}}</h2>
+    <h2>{{POST}}</h2>
+</body>
+</html>

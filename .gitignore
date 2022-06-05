@@ -1,0 +1,6 @@
+# 폴더 제외
+.idea
+venv
+
+# 파일 제외
+secure.json
