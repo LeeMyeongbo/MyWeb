@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from .tasks import execute_cmd
 from django.views.decorators.csrf import csrf_exempt
 import requests
+import socket
 
 # views.py 상에서의 request 실습 예제
 
@@ -14,7 +15,7 @@ def home(request):
     if request.method == 'POST':
         execute_cmd.apply_async(countdown=2)
         i = request.POST['search']
-        response = requests.get('https://blog.2mb-website.site/wow', params={'id': i}, verify=False)
+        response = requests.get('http://' + socket.gethostbyname(socket.gethostname()) + ':8000/wow', params={'id': i}, verify=False)
 
         ans = response.json()
         return render(request, 'home.html', {'POST': ans['key']})
